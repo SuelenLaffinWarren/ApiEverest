@@ -1,7 +1,8 @@
-﻿using CustomerApi.Models.Entities;
+﻿using ApiEverest.Entities;
 using CustomerApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace CustomerApi.Controllers
 {
@@ -16,62 +17,80 @@ namespace CustomerApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<CustomerEntity> GetAll()
+        public IActionResult GetAll()
         {
             var response = _customerService.GetAll();
-            return response;
+            return Ok(response);
         }
-
 
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {
-            var response = _customerService.GetById(id);
-
-            return response != null
-                ? Ok(response)
-                : NotFound($"Customer não encontrado para o Id: {id}");
+            try
+            {
+                var response = _customerService.GetById(id);
+                return Ok(response);
+            }
+            catch (ArgumentNullException exception)
+            {
+                var message = exception.InnerException?.Message ?? exception.Message;
+                return NotFound(message);
+            }
         }
 
         [HttpPost]
-
         public ActionResult Create([FromBody]CustomerEntity customerModel)
         {
-            var response = _customerService.Create(customerModel);
-            return response
-                ? Created("Dados inseridos com sucesso", customerModel.Id)
-                : BadRequest("Erro ao salvar customer");
+            try
+            {
+                var response = _customerService.Create(customerModel);
+                return Ok(response);
+
+            }
+            catch(ArgumentNullException exception) 
+            {
+                var message = exception.InnerException?.Message ?? exception.Message;
+                return BadRequest(message);
+            }
+                
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(CustomerEntity customerModel)
         {
-            var result = _customerService.Update(customerModel);
+            try
+            {
+                var result = _customerService.Update(customerModel);
+                if (!result)
+                    return BadRequest("O usuário já existe");
+                
+                return Ok(result);
+            
+
+            }
+            catch(ArgumentNullException exception)
+            {
+                var message = exception.InnerException?.Message ?? exception.Message;
+                return NotFound(message);
+            }
            
-            if (result)
-            {
-                return Ok();
-            }
-            else if (!result)
-            {
-                return BadRequest("O usuário já existe");
-            }
-
-            return NotFound($"Sem customer para Id = {customerModel.Id}");
-
         }
 
         [HttpDelete]
         public IActionResult Delete(long id)
         {
-            
-            var response = _customerService.Delete(id);
+            try
+            {
+                var response = _customerService.Delete(id);
+                return Ok(response);
 
-           
-            return response
-                ? Ok()
-                : NotFound($"Customer não encontrado para Id: {id}");
-   
+            }
+            catch (ArgumentNullException exception)
+            {
+                var message = exception.InnerException?.Message ?? exception.Message;
+                return NotFound(message);
+            }
+
         }
 
     }

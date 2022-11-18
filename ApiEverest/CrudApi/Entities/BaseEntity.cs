@@ -1,4 +1,4 @@
-﻿namespace CustomerApi.Models.Entities
+﻿namespace ApiEverest.Entities
 {
     public abstract class BaseEntity
     {

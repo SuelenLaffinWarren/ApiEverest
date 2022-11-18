@@ -1,4 +1,4 @@
-using CustomerApi.Models.Entities;
+using ApiEverest.Entities;
 using CustomerApi.Services;
 using CustomerApi.Validators;
 using FluentValidation;

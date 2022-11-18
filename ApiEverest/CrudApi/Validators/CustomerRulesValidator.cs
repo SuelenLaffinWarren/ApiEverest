@@ -1,7 +1,5 @@
-﻿using CustomerApi.Models.Entities;
-using DocumentValidator;
+﻿using ApiEverest.Entities;
 using FluentValidation;
-using System.Text.RegularExpressions;
 
 namespace CustomerApi.Validators
 {
@@ -20,7 +18,7 @@ namespace CustomerApi.Validators
 
             RuleFor(customer => customer.Cpf)
                 .NotEmpty()
-                .Length(11).Must(isValidCpf).WithMessage("Cpf is invalid");
+                .Must(isValidCpf).WithMessage("Cpf is invalid");
 
             
 
@@ -58,10 +56,8 @@ namespace CustomerApi.Validators
 
         private static bool isValidCpf(string cpf)
 
-
         {
-
-
+            
             int[] mult1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] mult2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
@@ -118,6 +114,7 @@ namespace CustomerApi.Validators
 
             digit = digit + rest.ToString();
 
+           
             return cpf.EndsWith(digit);
 
         }

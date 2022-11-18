@@ -1,4 +1,4 @@
-﻿using CustomerApi.Models.Entities;
+﻿using ApiEverest.Entities;
 
 namespace CustomerApi.Services
 {
