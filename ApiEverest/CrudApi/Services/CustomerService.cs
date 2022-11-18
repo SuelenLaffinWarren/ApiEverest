@@ -9,8 +9,19 @@ namespace CustomerApi.Services
         public bool Create(CustomerEntity model)
         {
             model.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
-            listCustomers.Add(model);   
-            return true;
+
+            if(!listCustomers.Any())
+            {
+                listCustomers.Add(model);
+                return true;
+            }
+            if(!customerDuplicate(model))
+            {
+                listCustomers.Add(model);
+                return true;
+            }
+            
+            return false;
         }
 
         public bool Delete(long id)
