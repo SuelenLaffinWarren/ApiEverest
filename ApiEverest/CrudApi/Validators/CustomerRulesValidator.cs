@@ -45,6 +45,8 @@ namespace CustomerApi.Validators
                 .NotEmpty()
                 .MinimumLength(11)
                 .MaximumLength(16);
+               
+                
 
             RuleFor(c => c.PostalCode)
                 .NotEmpty()
@@ -58,72 +60,46 @@ namespace CustomerApi.Validators
             return dateOfBirth <= DateTime.Now.AddYears(-18);
         }
 
-        private static bool isValidCpf(string cpf)
-
+        public bool isValidCpf(string cpf)
         {
-            
-            int[] mult1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] mult2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplierOne = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplierTwo = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
-            string tempCpf;
-            string digit;
-            int sum;
+            string temCpf;
+            string Digit;
             int rest;
+            int sum = 0;
 
-
+            cpf = cpf.Trim();
+            cpf = cpf.Replace(".", "").Replace("-", "");
             if (cpf.Length != 11)
                 return false;
-                cpf = cpf.Trim();
 
-            cpf = cpf.Replace(".", "").Replace("-", "");
+            temCpf = cpf.Substring(0, 9);
 
-            if (cpf.Distinct().Count() == 1) 
-                return false;
-
-            tempCpf = cpf.Substring(0, 9);
-
-            sum = 0;
-
-            for (int cont = 0; cont < 9; cont++)
-            {
-                sum += int.Parse(tempCpf[cont].ToString()) * mult1[cont];
-            }
-
+            for (int i = 0; i < 9; i++)
+                sum += int.Parse(temCpf[i].ToString()) * multiplierOne[i];
             rest = sum % 11;
 
             if (rest < 2)
-             
                 rest = 0;
-            
             else
-            
                 rest = 11 - rest;
-            
-
-            digit = rest.ToString();
-            tempCpf = tempCpf + digit;
-
+            Digit = rest.ToString();
+            temCpf = temCpf + Digit;
             sum = 0;
 
-            for (int cont = 0; cont < 10; cont++)
-            {
-                sum += int.Parse(tempCpf[cont].ToString()) * mult2[cont];
-            }
-
+            for (int i = 0; i < 10; i++)
+                sum += int.Parse(temCpf[i].ToString()) * multiplierTwo[i];
             rest = sum % 11;
+
             if (rest < 2)
-            
                 rest = 0;
-            
             else
-            
                 rest = 11 - rest;
-            
+            Digit = Digit + rest.ToString();
 
-            digit = digit + rest.ToString();
-
-           
-            return cpf.EndsWith(digit);
+            return cpf.EndsWith(Digit);
 
         }
     }

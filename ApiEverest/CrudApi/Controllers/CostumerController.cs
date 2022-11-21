@@ -76,7 +76,7 @@ namespace CustomerApi.Controllers
            
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
             try
