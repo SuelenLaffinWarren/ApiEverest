@@ -7,16 +7,23 @@ namespace CustomerApi.Services
     {
         private readonly List<CustomerEntity> listCustomers = new();
 
-        public void Create(CustomerEntity model)
+        public void Create(CustomerEntity customerCreate)
         {
-            model.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
+           
 
-            if (!listCustomers.Any() || customerDuplicate(model))
+            if (listCustomers.Any(c => c.Email == customerCreate.Email))
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Existing email");
 
             }
-            listCustomers.Add(model);
+
+            if (listCustomers.Any(c => c.Cpf == customerCreate.Cpf))
+            {
+                throw new ArgumentException("Existing CPF");
+
+            }
+            customerCreate.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
+            listCustomers.Add(customerCreate);
         }
 
         public bool Delete(long id)
