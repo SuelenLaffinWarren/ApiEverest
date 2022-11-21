@@ -8,22 +8,26 @@ namespace CustomerApi.Validators
         public CustomerRulesValidator()
         {
             RuleFor(customer => customer.FullName)
-                .NotEmpty().WithMessage("FullName is required")
+                .NotEmpty()
+                .WithMessage("FullName is required")
                 .MinimumLength(5).WithMessage("Minimum length must be 5 caracteres");
 
 
             RuleFor(customer => customer.Email)
-                .NotEmpty().WithMessage("Email is required")
+                .NotEmpty()
+                .WithMessage("Email is required")
                 .EmailAddress().WithMessage("Invalid Email format");
 
             RuleFor(customer => customer.Cpf)
                 .NotEmpty()
-                .Must(isValidCpf).WithMessage("Cpf is invalid");
+                .Must(isValidCpf)
+                .WithMessage("Cpf is invalid");
 
             
 
             RuleFor(customer => customer.DateOfBirth)
-                .NotEmpty().WithMessage("date of birth must be informed")
+                .NotEmpty()
+                .WithMessage("date of birth must be informed")
                 .Must(OverAgeCustomer).WithMessage("Customer must be at least 18 years old");
 
 
