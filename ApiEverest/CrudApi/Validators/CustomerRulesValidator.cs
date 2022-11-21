@@ -72,9 +72,13 @@ namespace CustomerApi.Validators
 
 
             if (cpf.Length != 11)
+                return false;
                 cpf = cpf.Trim();
+
             cpf = cpf.Replace(".", "").Replace("-", "");
-            if (cpf.Distinct().Count() == 1) return false;
+
+            if (cpf.Distinct().Count() == 1) 
+                return false;
 
             tempCpf = cpf.Substring(0, 9);
 
