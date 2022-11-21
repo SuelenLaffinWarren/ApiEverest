@@ -92,13 +92,13 @@ namespace CustomerApi.Validators
             rest = sum % 11;
 
             if (rest < 2)
-            {
+             
                 rest = 0;
-            }
+            
             else
-            {
+            
                 rest = 11 - rest;
-            }
+            
 
             digit = rest.ToString();
             tempCpf = tempCpf + digit;
@@ -112,13 +112,13 @@ namespace CustomerApi.Validators
 
             rest = sum % 11;
             if (rest < 2)
-            {
+            
                 rest = 0;
-            }
+            
             else
-            {
+            
                 rest = 11 - rest;
-            }
+            
 
             digit = digit + rest.ToString();
 
