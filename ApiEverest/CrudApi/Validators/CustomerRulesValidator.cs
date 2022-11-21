@@ -8,12 +8,12 @@ namespace CustomerApi.Validators
         public CustomerRulesValidator()
         {
             RuleFor(customer => customer.FullName)
-                .NotNull().WithMessage("FullName is required")
+                .NotEmpty().WithMessage("FullName is required")
                 .MinimumLength(5).WithMessage("Minimum length must be 5 caracteres");
 
 
             RuleFor(customer => customer.Email)
-                .NotNull().WithMessage("Email is required")
+                .NotEmpty().WithMessage("Email is required")
                 .EmailAddress().WithMessage("Invalid Email format");
 
             RuleFor(customer => customer.Cpf)

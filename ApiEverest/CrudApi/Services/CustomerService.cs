@@ -1,33 +1,29 @@
 ﻿using ApiEverest.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerApi.Services
 {
     public class CustomerService : ICustomerService
     {
-        private readonly List<CustomerEntity> listCustomers = new List<CustomerEntity>();
+        private readonly List<CustomerEntity> listCustomers = new();
 
-        public bool Create(CustomerEntity model)
+        public void Create(CustomerEntity model)
         {
             model.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
 
-            if(!listCustomers.Any())
+            if (!listCustomers.Any() || customerDuplicate(model))
             {
-                listCustomers.Add(model);
-                return true;
+                throw new ArgumentException();
+
             }
-            if(!customerDuplicate(model))
-            {
-                listCustomers.Add(model);
-                return true;
-            }
-            
-            return false;
+            listCustomers.Add(model);
         }
 
         public bool Delete(long id)
         {
            int index = listCustomers.FindIndex(customer => customer.Id == id);
             listCustomers.RemoveAt(index);
+           
             return true;
         }
 
@@ -38,17 +34,17 @@ namespace CustomerApi.Services
 
         public CustomerEntity? GetById(long id)
         {
-          return listCustomers.Find(customer => customer.Id == id);
+          var response = listCustomers.FirstOrDefault(customer => customer.Id == id);
+
+        if (response == null) throw new ArgumentNullException($"Customer with id: {id} was not found");
+
+         return response;   
         }
 
         public bool Update(CustomerEntity model)
         {
             var updateCustomer = GetById(model.Id);
-            if (updateCustomer == null)
-            {
-                return false;
-            }
-
+            
             if(customerDuplicate(model)) 
             { 
                 var index = listCustomers.IndexOf(updateCustomer);
@@ -64,9 +60,14 @@ namespace CustomerApi.Services
 
         public bool customerDuplicate(CustomerEntity model)
         {
-            if (listCustomers.Any(customer => customer.Cpf == model.Cpf || customer.Email == model.Email))
+            
+            if (listCustomers.Any(customer => customer.Cpf == model.Cpf) )
             {
-                return true;
+                throw new ArgumentException("Did not found customer for CPFs");
+            }
+            if(listCustomers.Any(customer => customer.Email == model.Email))
+            {
+                throw new ArgumentException("Did not found customer for Email");
             }
             return false;
         }

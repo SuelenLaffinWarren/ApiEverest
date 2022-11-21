@@ -39,12 +39,12 @@ namespace CustomerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([FromBody]CustomerEntity customerModel)
+        public ActionResult Create([FromBody]CustomerEntity customerEntity)
         {
             try
             {
-                var response = _customerService.Create(customerModel);
-                return Ok(response);
+                _customerService.Create(customerEntity);
+                return Created("Id:", customerEntity.Id);
 
             }
             catch(ArgumentNullException exception) 
@@ -56,11 +56,11 @@ namespace CustomerApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(CustomerEntity customerModel)
+        public IActionResult Update(CustomerEntity customerEntity)
         {
             try
             {
-                var result = _customerService.Update(customerModel);
+                var result = _customerService.Update(customerEntity);
                 if (!result)
                     return BadRequest("O usuário já existe");
                 
