@@ -17,7 +17,6 @@ namespace ApiEverest.Entities
         string city,
         string postalCode,
         int number)
-
         {
             FullName = fullName;
             Email = email;
