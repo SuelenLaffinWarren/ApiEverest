@@ -26,8 +26,8 @@ namespace CustomerApi.Services
 
         public bool Delete(long id)
         {
-           int index = listCustomers.FindIndex(customer => customer.Id == id);
-            listCustomers.RemoveAt(index);
+           var customer = GetById(id);
+           listCustomers.Remove(customer);
            
             return true;
         }
