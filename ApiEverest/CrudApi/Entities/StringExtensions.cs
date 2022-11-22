@@ -7,6 +7,5 @@
         {
             return Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
         }
-       
     }
 }
