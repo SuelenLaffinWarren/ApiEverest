@@ -23,7 +23,6 @@ namespace CustomerApi.Controllers
             var response = _customerService.GetAll();
             return Ok(response);
         }
-
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {
