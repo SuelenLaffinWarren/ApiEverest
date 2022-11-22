@@ -84,6 +84,7 @@ namespace CustomerApi.Services
             {
                 throw new ArgumentException("Did not found customer for Email");
             }
+            
             return false;
         }
     }
