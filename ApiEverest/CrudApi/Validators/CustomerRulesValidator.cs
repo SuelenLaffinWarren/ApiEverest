@@ -84,6 +84,7 @@ namespace CustomerApi.Validators
                 rest = 0;
             else
                 rest = 11 - rest;
+                
 
             digit = rest.ToString();
 
