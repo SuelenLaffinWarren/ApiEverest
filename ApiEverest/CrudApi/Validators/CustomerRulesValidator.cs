@@ -64,7 +64,6 @@ namespace CustomerApi.Validators
             string Digit;
             int rest;
             int sum = 0;
-
             cpf = cpf.Trim();
             cpf = cpf.Replace(".", "").Replace("-", "");
             if (cpf.Length != 11)
