@@ -29,9 +29,9 @@ namespace CustomerApi.Services
 
         public bool Delete(long id)
         {
-           var customer = GetById(id);
-           listCustomers.Remove(customer);
-           
+            var customer = GetById(id);
+            listCustomers.Remove(customer);
+
             return true;
         }
 
@@ -42,38 +42,47 @@ namespace CustomerApi.Services
 
         public CustomerEntity? GetById(long id)
         {
-          var response = listCustomers.FirstOrDefault(customer => customer.Id == id);
+            var response = listCustomers.FirstOrDefault(customer => customer.Id == id);
 
-        if (response == null) throw new ArgumentNullException($"Customer with id: {id} was not found");
+            if (response == null) throw new ArgumentNullException($"Customer with id: {id} was not found");
 
-         return response;   
+            return response;
         }
 
-        public bool Update(CustomerEntity model)
+        public bool Update(CustomerEntity updateCustomer)
         {
-            var updateCustomer = GetById(model.Id);
-            
-            if(customerDuplicate(model)) 
-            { 
-                var index = listCustomers.IndexOf(updateCustomer);
+           
 
-                listCustomers[index] = model;
-
-                return true;
+            if (listCustomers.Any(customer => customer.Email == updateCustomer.Email && customer.Id != updateCustomer.Id))
+            {
+                throw new ArgumentException($"Did not found customer for Email: {updateCustomer.Email}");
             }
 
-            return false;
+
+            if (listCustomers.Any(customer => customer.Cpf == updateCustomer.Cpf && customer.Id != updateCustomer.Id))
+            {
+                throw new ArgumentException($"Did not found customer for Cpf: {updateCustomer.Cpf}");
+            }
+
+            var index = listCustomers.FindIndex(customer => customer.Id == updateCustomer.Id);
+            if (index == -1) return false;
+
+            updateCustomer.Id = listCustomers[index].Id;
+
+            listCustomers[index] = updateCustomer;
+
+            return true;
 
         }
 
         public bool customerDuplicate(CustomerEntity model)
         {
-            
-            if (listCustomers.Any(customer => customer.Cpf == model.Cpf) )
+
+            if (listCustomers.Any(customer => customer.Cpf == model.Cpf))
             {
                 throw new ArgumentException("Did not found customer for CPFs");
             }
-            if(listCustomers.Any(customer => customer.Email == model.Email))
+            if (listCustomers.Any(customer => customer.Email == model.Email))
             {
                 throw new ArgumentException("Did not found customer for Email");
             }

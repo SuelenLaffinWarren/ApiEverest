@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Interfaces\**" />
-    <Content Remove="Interfaces\**" />
-    <EmbeddedResource Remove="Interfaces\**" />
-    <None Remove="Interfaces\**" />
+ 
   </ItemGroup>
 
   <ItemGroup>
