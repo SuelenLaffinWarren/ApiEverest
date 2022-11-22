@@ -47,7 +47,7 @@ namespace CustomerApi.Controllers
                 return Created("Id:", customerEntity.Id);
 
             }
-            catch(ArgumentNullException exception) 
+            catch(ArgumentException exception) 
             {
                 var message = exception.InnerException?.Message ?? exception.Message;
                 return BadRequest(message);
