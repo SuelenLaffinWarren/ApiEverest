@@ -1,4 +1,5 @@
 ﻿using ApiEverest.Entities;
+using System.Collections.Generic;
 
 namespace CustomerApi.Services
 {

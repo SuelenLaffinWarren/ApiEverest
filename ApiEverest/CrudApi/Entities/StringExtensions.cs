@@ -1,4 +1,6 @@
-﻿namespace ApiEverest.Entities
+﻿using System;
+
+namespace ApiEverest.Entities
 {
     public static class StringExtensions
     {

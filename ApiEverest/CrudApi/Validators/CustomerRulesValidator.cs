@@ -1,5 +1,6 @@
 ﻿using ApiEverest.Entities;
 using FluentValidation;
+using System;
 
 namespace CustomerApi.Validators
 {
