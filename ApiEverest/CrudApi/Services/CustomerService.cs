@@ -20,6 +20,7 @@ namespace CustomerApi.Services
                 throw new ArgumentException("Existing CPF");
 
             }
+            
             customerCreate.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
             listCustomers.Add(customerCreate);
         }
