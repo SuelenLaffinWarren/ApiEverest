@@ -14,7 +14,6 @@ using FluentValidation.AspNetCore;
         builder.Services.AddSingleton<ICustomerService, CustomerService>();
         builder.Services.AddScoped<IValidator<CustomerEntity>, CustomerRulesValidator>();
      
-
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
