@@ -27,7 +27,6 @@ namespace CustomerApi.Validators
                 .WithMessage("date of birth must be informed")
                 .Must(OverAgeCustomer).WithMessage("Customer must be at least 18 years old");
 
-
             RuleFor(customer => customer.Country)
                 .NotEmpty()
                 .MinimumLength(2)
