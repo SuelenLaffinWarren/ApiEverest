@@ -8,7 +8,6 @@ namespace CustomerApi.Services
         bool Update(CustomerEntity model);
         bool Delete(long id);
         IEnumerable<CustomerEntity> GetAll();
-
         CustomerEntity? GetById(long id);
 
     }
