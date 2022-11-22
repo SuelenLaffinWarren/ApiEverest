@@ -11,6 +11,7 @@ namespace CustomerApi.Controllers
     public class CostumerController : ControllerBase
     {
         private readonly ICustomerService _customerService;
+        
         public CostumerController(ICustomerService customerService)
         {
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
