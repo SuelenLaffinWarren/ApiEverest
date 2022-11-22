@@ -4,10 +4,6 @@ using CustomerApi.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
-internal class Program
-{
-    private static void Main(string[] args)
-    {
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
