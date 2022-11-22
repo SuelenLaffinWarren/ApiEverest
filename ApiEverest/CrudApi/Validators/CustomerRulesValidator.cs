@@ -11,8 +11,7 @@ namespace CustomerApi.Validators
         {
             RuleFor(customer => customer.FullName)
                 .NotEmpty()
-                .WithMessage("FullName is required")
-                .MinimumLength(5).WithMessage("Minimum length must be 5 caracteres");
+                .MinimumLength(5);
 
             RuleFor(customer => customer.Email)
                 .NotEmpty()
