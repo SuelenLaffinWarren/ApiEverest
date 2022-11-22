@@ -100,7 +100,6 @@ namespace CustomerApi.Validators
             Digit = Digit + rest.ToString();
 
             return cpf.EndsWith(Digit);
-
         }
     }
 }
