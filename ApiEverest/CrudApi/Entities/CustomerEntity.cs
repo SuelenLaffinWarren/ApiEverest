@@ -12,7 +12,7 @@ namespace ApiEverest.Entities
         string cpf,
         string cellphone,
         DateTime dateOfBirth,
-        string emailSms,
+        bool emailSms,
         bool whatsapp,
         string country,
         string city,
