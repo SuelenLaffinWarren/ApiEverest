@@ -22,8 +22,6 @@ namespace CustomerApi.Validators
                 .Must(isValidCpf)
                 .WithMessage("Cpf is invalid");
 
-            
-
             RuleFor(customer => customer.DateOfBirth)
                 .NotEmpty()
                 .WithMessage("date of birth must be informed")
