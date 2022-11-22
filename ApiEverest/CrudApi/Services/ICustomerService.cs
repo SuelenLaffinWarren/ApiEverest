@@ -9,6 +9,5 @@ namespace CustomerApi.Services
         bool Delete(long id);
         IEnumerable<CustomerEntity> GetAll();
         CustomerEntity? GetById(long id);
-
     }
 }
