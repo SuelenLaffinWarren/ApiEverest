@@ -41,7 +41,7 @@ namespace ApiEverest.Entities
         public string Cellphone { get; set; } 
         public int Number { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string EmailSms { get; set; }
+        public bool EmailSms { get; set; }
         public bool Whatsapp { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
