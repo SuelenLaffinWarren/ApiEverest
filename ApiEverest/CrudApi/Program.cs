@@ -32,5 +32,3 @@ using FluentValidation.AspNetCore;
         app.MapControllers();
 
         app.Run();
-    }
-}
