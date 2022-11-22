@@ -9,8 +9,6 @@ namespace CustomerApi.Services
 
         public void Create(CustomerEntity customerCreate)
         {
-           
-
             if (listCustomers.Any(c => c.Email == customerCreate.Email))
             {
                 throw new ArgumentException("Existing email");
