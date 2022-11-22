@@ -90,7 +90,6 @@ namespace CustomerApi.Controllers
                 var message = exception.InnerException?.Message ?? exception.Message;
                 return NotFound(message);
             }
-
         }
 
     }
