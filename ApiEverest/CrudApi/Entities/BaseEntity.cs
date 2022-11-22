@@ -1,7 +1,7 @@
 ﻿namespace ApiEverest.Entities
 {
-    public abstract class BaseEntity
+    public interface IEntity
     {
-        public long Id { get; set; }
+        long Id { get; set; }
     }
 }
