@@ -2,7 +2,7 @@
 
 namespace ApiEverest.Entities
 {
-    public class CustomerEntity : BaseEntity
+    public class CustomerEntity : IEntity
     {
         public CustomerEntity(
         string fullName,
