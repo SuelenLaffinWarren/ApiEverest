@@ -4,7 +4,7 @@ namespace ApiEverest.Entities
     {
         public static string CpfFormatter(this string cpf)
         {
-            return cpf.Trim().Replace(".", "").Replace("-", "");
+            return cpf.Trim().Replace(".", "").Replace("-", "").Replace(",", "").Replace(" ", "");
         }
     }
 }
