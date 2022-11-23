@@ -42,20 +42,16 @@ namespace CustomerApi.Validators
                 .NotEmpty()
                 .MinimumLength(11)
                 .MaximumLength(16);
-               
-                
 
             RuleFor(c => c.PostalCode)
                 .NotEmpty()
                 .MinimumLength(8)
                 .MaximumLength(9);
-        }
-        
+        } 
         private static bool OverAgeCustomer(DateTime dateOfBirth)
         {
             return dateOfBirth <= DateTime.Now.AddYears(-18);
         }
-
         public bool isValidCpf(string cpf)
         {
             cpf = cpf.CpfFormatter();
@@ -84,7 +80,6 @@ namespace CustomerApi.Validators
             else
                 rest = 11 - rest;
                 
-
             digit = rest.ToString();
 
             sum = 0;

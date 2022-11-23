@@ -19,9 +19,7 @@ namespace CustomerApi.Services
         public void Delete(long id)
         {
             var customer = GetById(id);
-            listCustomers.Remove(customer);
-
-           
+            listCustomers.Remove(customer);          
         }
 
         public IEnumerable<CustomerEntity> GetAll()
@@ -47,7 +45,6 @@ namespace CustomerApi.Services
                 throw new ArgumentNullException($"Customer with id {updateCustomer.Id} not found");
        
             listCustomers[index] = updateCustomer;
-
         }
 
         private void CustomerDuplicate(CustomerEntity model)
@@ -56,8 +53,7 @@ namespace CustomerApi.Services
                 throw new ArgumentException("This CPF already exists");
             
             if (listCustomers.Any(customer => customer.Email == model.Email))            
-                throw new ArgumentException("This email already exists");
-                     
+                throw new ArgumentException("This email already exists");                     
         }
     }
 }
