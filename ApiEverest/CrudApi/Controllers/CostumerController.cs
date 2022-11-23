@@ -1,6 +1,5 @@
 ﻿using ApiEverest.Entities;
 using CustomerApi.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -11,7 +10,7 @@ namespace CustomerApi.Controllers
     public class CostumerController : ControllerBase
     {
         private readonly ICustomerService _customerService;
-        
+
         public CostumerController(ICustomerService customerService)
         {
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
@@ -23,7 +22,7 @@ namespace CustomerApi.Controllers
             var response = _customerService.GetAll();
             return Ok(response);
         }
-        
+
         [HttpGet("{id}")]
         public IActionResult GetById(long id)
         {
@@ -40,14 +39,14 @@ namespace CustomerApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]CustomerEntity customerEntity)
+        public IActionResult Create([FromBody] CustomerEntity customerEntity)
         {
             try
             {
                 _customerService.Create(customerEntity);
                 return Created("Id:", customerEntity.Id);
             }
-            catch(ArgumentException exception) 
+            catch (ArgumentException exception)
             {
                 var message = exception.InnerException?.Message ?? exception.Message;
                 return BadRequest(message);
@@ -60,12 +59,12 @@ namespace CustomerApi.Controllers
             try
             {
                 _customerService.Update(customerEntity);
-                  return Ok(); 
+                return Ok();
             }
-            catch(ArgumentNullException exception)
+            catch (ArgumentNullException exception)
             {
                 var message = exception.InnerException?.Message ?? exception.Message;
-                  return NotFound(message);
+                return NotFound(message);
             }
             catch (ArgumentException exception)
             {
