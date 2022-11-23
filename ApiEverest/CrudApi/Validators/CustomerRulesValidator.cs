@@ -48,6 +48,7 @@ namespace CustomerApi.Validators
                 .MinimumLength(8)
                 .MaximumLength(9);
         } 
+
         private static bool OverAgeCustomer(DateTime dateOfBirth)
         {
             return dateOfBirth <= DateTime.Now.AddYears(-18);
