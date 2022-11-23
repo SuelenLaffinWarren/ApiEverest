@@ -40,7 +40,7 @@ namespace CustomerApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([FromBody]CustomerEntity customerEntity)
+        public IActionResult Create([FromBody]CustomerEntity customerEntity)
         {
             try
             {
