@@ -25,12 +25,12 @@ namespace CustomerApi.Services
             listCustomers.Add(customerCreate);
         }
 
-        public bool Delete(long id)
+        public void Delete(long id)
         {
             var customer = GetById(id);
             listCustomers.Remove(customer);
 
-            return true;
+           
         }
 
         public IEnumerable<CustomerEntity> GetAll()
@@ -47,29 +47,15 @@ namespace CustomerApi.Services
             return response;
         }
 
-        public bool Update(CustomerEntity updateCustomer)
+        public void Update(CustomerEntity updateCustomer)
         {
-           
-
-            if (listCustomers.Any(customer => customer.Email == updateCustomer.Email && customer.Id != updateCustomer.Id))
-            {
-                throw new ArgumentException($"Did not found customer for Email: {updateCustomer.Email}");
-            }
-
-
-            if (listCustomers.Any(customer => customer.Cpf == updateCustomer.Cpf && customer.Id != updateCustomer.Id))
-            {
-                throw new ArgumentException($"Did not found customer for Cpf: {updateCustomer.Cpf}");
-            }
-
+            customerDuplicate(updateCustomer);
             var index = listCustomers.FindIndex(customer => customer.Id == updateCustomer.Id);
-            if (index == -1) return false;
 
-            updateCustomer.Id = listCustomers[index].Id;
-
+            if (index == -1)
+                throw new ArgumentNullException($"Customer with id {updateCustomer.Id} not found");
+       
             listCustomers[index] = updateCustomer;
-
-            return true;
 
         }
 
@@ -78,11 +64,11 @@ namespace CustomerApi.Services
 
             if (listCustomers.Any(customer => customer.Cpf == model.Cpf))
             {
-                throw new ArgumentException("Did not found customer for CPFs");
+                throw new ArgumentException("This CPF already exists");
             }
             if (listCustomers.Any(customer => customer.Email == model.Email))
             {
-                throw new ArgumentException("Did not found customer for Email");
+                throw new ArgumentException("This email already exists");
             }
             
             return false;

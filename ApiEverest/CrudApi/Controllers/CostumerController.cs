@@ -60,19 +60,20 @@ namespace CustomerApi.Controllers
         {
             try
             {
-                var result = _customerService.Update(customerEntity);
-                if (!result)
-                    return BadRequest("O usuário já existe");
-                
-                return Ok(result);
+                _customerService.Update(customerEntity);
+                    return Ok();
             
-
             }
             catch(ArgumentNullException exception)
             {
                 var message = exception.InnerException?.Message ?? exception.Message;
                 return NotFound(message);
-            }           
+            }
+            catch (ArgumentException exception)
+            {
+                var message = exception.InnerException?.Message ?? exception.Message;
+                return BadRequest(message);
+            }
         }
 
         [HttpDelete("{id}")]
@@ -80,8 +81,8 @@ namespace CustomerApi.Controllers
         {
             try
             {
-                var response = _customerService.Delete(id);
-                return Ok(response);
+                _customerService.Delete(id);
+                return NoContent();
 
             }
             catch (ArgumentNullException exception)
