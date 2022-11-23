@@ -11,7 +11,7 @@ namespace CustomerApi.Services
 
         public void Create(CustomerEntity customerCreate)
         {
-            customerDuplicate(customerCreate);
+            CustomerDuplicate(customerCreate);
             customerCreate.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
             listCustomers.Add(customerCreate);
         }
@@ -40,7 +40,7 @@ namespace CustomerApi.Services
 
         public void Update(CustomerEntity updateCustomer)
         {
-            customerDuplicate(updateCustomer);
+            CustomerDuplicate(updateCustomer);
             var index = listCustomers.FindIndex(customer => customer.Id == updateCustomer.Id);
 
             if (index == -1)
@@ -50,19 +50,14 @@ namespace CustomerApi.Services
 
         }
 
-        public bool customerDuplicate(CustomerEntity model)
+        private void CustomerDuplicate(CustomerEntity model)
         {
-
-            if (listCustomers.Any(customer => customer.Cpf == model.Cpf))
-            {
+            if (listCustomers.Any(customer => customer.Cpf == model.Cpf))      
                 throw new ArgumentException("This CPF already exists");
-            }
-            if (listCustomers.Any(customer => customer.Email == model.Email))
-            {
-                throw new ArgumentException("This email already exists");
-            }
             
-            return false;
+            if (listCustomers.Any(customer => customer.Email == model.Email))            
+                throw new ArgumentException("This email already exists");
+                     
         }
     }
 }
