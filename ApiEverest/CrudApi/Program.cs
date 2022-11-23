@@ -1,6 +1,6 @@
-using ApiEverest.Entities;
-using CustomerApi.Services;
-using CustomerApi.Validators;
+using AppServices.Validators;
+using DomainModels.Entities;
+using DomainServices.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;

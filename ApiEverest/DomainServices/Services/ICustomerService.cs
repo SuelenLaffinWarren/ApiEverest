@@ -1,14 +1,13 @@
-﻿using ApiEverest.Entities;
-using System.Collections.Generic;
+﻿using DomainModels.Entities;
 
-namespace CustomerApi.Services
+namespace DomainServices.Services
 {
-    public interface ICustomerService 
+    public interface ICustomerService
     {
         void Create(CustomerEntity model);
         void Update(CustomerEntity model);
         void Delete(long id);
         IEnumerable<CustomerEntity> GetAll();
-        CustomerEntity? GetById(long id);
+        CustomerEntity GetById(long id);
     }
 }

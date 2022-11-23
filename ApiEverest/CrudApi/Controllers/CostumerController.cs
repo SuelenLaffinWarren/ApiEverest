@@ -1,9 +1,9 @@
-﻿using ApiEverest.Entities;
-using CustomerApi.Services;
+﻿using DomainModels.Entities;
+using DomainServices.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace CustomerApi.Controllers
+namespace ApiEverest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

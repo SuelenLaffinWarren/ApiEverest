@@ -1,6 +1,5 @@
-﻿using System;
-
-namespace ApiEverest.Entities
+﻿
+namespace DomainModels.Entities
 {
     public class CustomerEntity : IEntity
     {
@@ -33,12 +32,12 @@ namespace ApiEverest.Entities
             PostalCode = postalCode;
             Whatsapp = whatsapp;
             Number = number;
-        }       
+        }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string EmailConfirmation { get; set; }
         public string Cpf { get; set; }
-        public string Cellphone { get; set; } 
+        public string Cellphone { get; set; }
         public int Number { get; set; }
         public DateTime DateOfBirth { get; set; }
         public bool EmailSms { get; set; }
