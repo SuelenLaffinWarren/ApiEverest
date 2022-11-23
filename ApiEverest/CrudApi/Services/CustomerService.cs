@@ -11,7 +11,7 @@ namespace CustomerApi.Services
 
         public void Create(CustomerEntity customerCreate)
         {
-            CustomerDuplicate(customerCreate);
+            customerDuplicate(customerCreate);
             customerCreate.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
             listCustomers.Add(customerCreate);
         }
