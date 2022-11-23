@@ -11,15 +11,7 @@ namespace CustomerApi.Services
 
         public void Create(CustomerEntity customerCreate)
         {
-            if (listCustomers.Any(c => c.Email == customerCreate.Email))
-                throw new ArgumentException("Existing email");
-
-            if (listCustomers.Any(c => c.Cpf == customerCreate.Cpf))
-            {
-                throw new ArgumentException("Existing CPF");
-
-            }
-            
+            CustomerDuplicate(customerCreate);
             customerCreate.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
             listCustomers.Add(customerCreate);
         }
