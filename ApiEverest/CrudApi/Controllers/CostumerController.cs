@@ -46,7 +46,6 @@ namespace CustomerApi.Controllers
             {
                 _customerService.Create(customerEntity);
                 return Created("Id:", customerEntity.Id);
-
             }
             catch(ArgumentException exception) 
             {
@@ -61,13 +60,12 @@ namespace CustomerApi.Controllers
             try
             {
                 _customerService.Update(customerEntity);
-                    return Ok();
-            
+                  return Ok(); 
             }
             catch(ArgumentNullException exception)
             {
                 var message = exception.InnerException?.Message ?? exception.Message;
-                return NotFound(message);
+                  return NotFound(message);
             }
             catch (ArgumentException exception)
             {
@@ -83,7 +81,6 @@ namespace CustomerApi.Controllers
             {
                 _customerService.Delete(id);
                 return NoContent();
-
             }
             catch (ArgumentNullException exception)
             {
