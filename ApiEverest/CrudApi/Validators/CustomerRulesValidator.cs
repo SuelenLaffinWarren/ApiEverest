@@ -52,6 +52,7 @@ namespace CustomerApi.Validators
         {
             return dateOfBirth <= DateTime.Now.AddYears(-18);
         }
+
         public bool isValidCpf(string cpf)
         {
             cpf = cpf.CpfFormatter();
