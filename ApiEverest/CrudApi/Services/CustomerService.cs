@@ -29,7 +29,7 @@ namespace CustomerApi.Services
             return listCustomers;
         }
 
-        public CustomerEntity? GetById(long id)
+        public CustomerEntity GetById(long id)
         {
             var response = listCustomers.FirstOrDefault(customer => customer.Id == id);
 
