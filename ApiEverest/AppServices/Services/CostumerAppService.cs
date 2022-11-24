@@ -2,7 +2,7 @@
 
 namespace AppServices.Services
 {
-    public class CostumerAppService : ICostumerAppService
+    public class CustomerAppService : ICustomerAppService
     {
         private readonly ICostumerAppService _customerAppService;
         public void Create(CustomerEntity customerEntity)
