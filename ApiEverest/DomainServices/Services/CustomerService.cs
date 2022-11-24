@@ -30,7 +30,7 @@ namespace DomainServices.Services
         }
         public void Update(CustomerEntity updateCustomer)
         {
-            CustomerDuplicate(updateCustomer);
+            NotChangeCPFemail(updateCustomer);
             var index = listCustomers.FindIndex(customer => customer.Id == updateCustomer.Id);
 
             if (index == -1)
@@ -45,6 +45,15 @@ namespace DomainServices.Services
 
             if (listCustomers.Any(customer => customer.Email == model.Email))
                 throw new ArgumentException("This email already exists");
+        }
+
+        private void NotChangeCPFemail(CustomerEntity model)
+        {
+            if (listCustomers.Any(customer => customer.Cpf != model.Cpf))
+                throw new ArgumentException("Unable to change CPF");
+
+            if (listCustomers.Any(customer => customer.Email != model.Email))
+                throw new ArgumentException("Unable to change email");
         }
     }
 }
