@@ -2,7 +2,7 @@
 
 namespace AppServices.Services
 {
-    public interface ICostumerAppService
+    public interface ICustomerAppService
     {
         void Create(CustomerEntity model);
         void Update(CustomerEntity model);
