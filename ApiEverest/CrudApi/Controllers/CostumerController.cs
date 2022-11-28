@@ -1,5 +1,5 @@
-﻿using DomainModels.Entities;
-using DomainServices.Services;
+﻿using AppServices.Services;
+using DomainModels.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -9,9 +9,9 @@ namespace ApiEverest.Controllers
     [ApiController]
     public class CostumerController : ControllerBase
     {
-        private readonly ICustomerService _customerService;
+        private readonly ICustomerAppService _customerService;
 
-        public CostumerController(ICustomerService customerService)
+        public CostumerController(ICustomerAppService customerService)
         {
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
         }
