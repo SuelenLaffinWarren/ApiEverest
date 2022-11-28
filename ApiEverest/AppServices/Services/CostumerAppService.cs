@@ -1,4 +1,6 @@
 ﻿using DomainModels.Entities;
+using DomainServices.Services;
+using System.Collections.Generic;
 
 namespace AppServices.Services
 {
@@ -8,27 +10,27 @@ namespace AppServices.Services
 
         public void Create(CustomerEntity customerEntity)
         {
-             _customerAppService.Create(customerEntity);
+            _customerService.Create(customerEntity);
         }
 
         public void Delete(long id)
         {
-           _customerAppService.Delete(id);
+            _customerService.Delete(id);
         }
 
         public IEnumerable<CustomerEntity> GetAll()
         {
-            return _customerAppService.GetAll();
+            return _customerService.GetAll();
         }
 
         public CustomerEntity GetById(long id)
         {
-           return _customerAppService.GetById(id);
+           return _customerService.GetById(id);
         }
 
         public void Update(CustomerEntity customerEntity)
         {
-           _customerAppService.Update(customerEntity);
+            _customerService.Update(customerEntity);
         }
     }
 }

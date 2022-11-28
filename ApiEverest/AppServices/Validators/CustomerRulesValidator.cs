@@ -1,5 +1,7 @@
 ﻿using DomainModels.Entities;
 using FluentValidation;
+using System;
+using System.Linq;
 
 namespace AppServices.Validators
 {
