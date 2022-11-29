@@ -1,7 +1,10 @@
 ﻿using AppServices.Services;
+using AutoMapper;
 using DomainModels.Entities;
+using DomainServices.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace ApiEverest.Controllers
 {
@@ -9,10 +12,12 @@ namespace ApiEverest.Controllers
     [ApiController]
     public class CostumerController : ControllerBase
     {
-        private readonly ICustomerAppService _customerService;
+        private readonly ICustomerService _customerService;
+        private readonly IMapper _mapper;
 
-        public CostumerController(ICustomerAppService customerService)
+        public CostumerController(ICustomerService customerService, IMapper mapper)
         {
+            _mapper = mapper;
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
         }
 

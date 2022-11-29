@@ -1,31 +1,36 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DomainModels.Entities
+namespace AppModels
 {
-    public class CustomerEntity : IEntity
+    public class CustomerCreateDto
     {
-        public CustomerEntity(
-            string fullName,
-            string email,
-            string cpf,
-            string cellphone,
-            DateTime dateOfBirth,
-            bool emailSms,
-            bool whatsapp,
-            string country,
-            string city,
-            string postalCode,
-            int number
-        )
+        public CustomerCreateDto(
+          string fullName,
+          string email,
+          string emailConfirmation,
+          string cpf,
+          string cellphone,
+          DateTime dateOfBirth,
+          bool emailSms,
+          bool whatsapp,
+          string country,
+          string city,
+          string postalCode,
+          int number
+      )
         {
             FullName = fullName;
             Email = email;
+            EmailConfirmation = emailConfirmation;
             EmailSms = emailSms;
             Cellphone = cellphone;
             DateOfBirth = dateOfBirth;
             EmailSms = emailSms;
-            Cpf = cpf.CpfFormatter();
+            Cpf = cpf;
             Cellphone = cellphone;
             Country = country;
             City = city;
@@ -35,6 +40,8 @@ namespace DomainModels.Entities
         }
         public string FullName { get; set; }
         public string Email { get; set; }
+
+        public string EmailConfirmation { get; set; }
         public string Cpf { get; set; }
         public string Cellphone { get; set; }
         public int Number { get; set; }
@@ -47,3 +54,4 @@ namespace DomainModels.Entities
         public long Id { get; set; }
     }
 }
+
