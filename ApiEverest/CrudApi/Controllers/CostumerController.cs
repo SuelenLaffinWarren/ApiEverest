@@ -13,11 +13,8 @@ namespace ApiEverest.Controllers
     public class CostumerController : ControllerBase
     {
         private readonly ICustomerService _customerService;
-        private readonly IMapper _mapper;
-
-        public CostumerController(ICustomerService customerService, IMapper mapper)
+        public CostumerController(ICustomerService customerService)
         {
-            _mapper = mapper;
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
         }
 
@@ -25,6 +22,7 @@ namespace ApiEverest.Controllers
         public IActionResult GetAll()
         {
             var response = _customerService.GetAll();
+           
             return Ok(response);
         }
 
