@@ -1,4 +1,5 @@
-﻿using AppServices.Services;
+﻿using AppModels;
+using AppServices.Services;
 using AutoMapper;
 using DomainModels.Entities;
 using DomainServices.Services;
@@ -12,8 +13,8 @@ namespace ApiEverest.Controllers
     [ApiController]
     public class CostumerController : ControllerBase
     {
-        private readonly ICustomerService _customerService;
-        public CostumerController(ICustomerService customerService)
+        private readonly ICustomerAppService _customerService;
+        public CostumerController(ICustomerAppService customerService)
         {
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
         }
@@ -42,7 +43,7 @@ namespace ApiEverest.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CustomerEntity customerEntity)
+        public IActionResult Create([FromBody] CustomerCreateDto customerEntity)
         {
             try
             {
@@ -57,7 +58,7 @@ namespace ApiEverest.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(CustomerEntity customerEntity)
+        public IActionResult Update(CustomerUpdateDto customerEntity)
         {
             try
             {

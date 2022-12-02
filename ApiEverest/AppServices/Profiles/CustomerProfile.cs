@@ -9,9 +9,9 @@ namespace ApiEverest.Profiles
     {
         public CustomerProfile() 
         {
-            CreateMap<CustomerEntity, CustomerCreateDto>();
-            CreateMap<CustomerEntity, CustomerUpdateDto>();
-            CreateMap<CustomerResult, CustomerEntity>();
+            CreateMap<CustomerCreateDto, CustomerEntity>();
+            CreateMap<CustomerUpdateDto, CustomerEntity>();
+            CreateMap<CustomerEntity, CustomerResult>();
 
         }
 
