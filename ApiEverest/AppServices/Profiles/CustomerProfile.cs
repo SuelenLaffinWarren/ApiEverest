@@ -3,7 +3,7 @@ using AutoMapper;
 using DomainModels.Entities;
 
 
-namespace ApiEverest.Mappers
+namespace ApiEverest.Profiles
 {
     public class CustomerProfile : Profile
     {
@@ -11,7 +11,7 @@ namespace ApiEverest.Mappers
         {
             CreateMap<CustomerEntity, CustomerCreateDto>();
             CreateMap<CustomerEntity, CustomerUpdateDto>();
-            CreateMap<CustomerEntity, CustomerResult>();
+            CreateMap<CustomerResult, CustomerEntity>();
 
         }
 

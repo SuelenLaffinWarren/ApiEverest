@@ -2,7 +2,6 @@
 using AutoMapper;
 using DomainModels.Entities;
 using DomainServices.Services;
-using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 
@@ -19,10 +18,10 @@ namespace AppServices.Services
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
         }
 
-        public void Create(CustomerCreateDto customerEntity)
+        public void Create(CustomerCreateDto customerCreateDto)
         {
-            var customerDto = _mapper.Map<CustomerEntity>(customerEntity);
-            _customerService.Create(customerDto);
+            var _customerCretDto = _mapper.Map<CustomerEntity>(customerCreateDto);
+            _customerService.Create(_customerCretDto);
 
         }
 
@@ -43,10 +42,10 @@ namespace AppServices.Services
             return _mapper.Map<CustomerResult>(getByIdCustomer);
         }
 
-        public void Update(CustomerUpdateDto customerEntity)
+        public void Update(CustomerUpdateDto customerUpdateDto)
         {
-            var customerDto = _mapper.Map<CustomerEntity>(customerEntity);
-            _customerService.Update(customerDto);
+            var _customerUpdateDto = _mapper.Map<CustomerEntity>(customerUpdateDto);
+            _customerService.Update(_customerUpdateDto);
         }
     }
 }

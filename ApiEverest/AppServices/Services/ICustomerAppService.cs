@@ -1,13 +1,12 @@
 ﻿using AppModels;
-using DomainModels.Entities;
 using System.Collections.Generic;
 
 namespace AppServices.Services
 {
     public interface ICustomerAppService
     {
-        void Create(CustomerCreateDto model);
-        void Update(CustomerUpdateDto model);
+        void Create(CustomerCreateDto customerCreateDto);
+        void Update(CustomerUpdateDto customerUpdateDto);
         void Delete(long id);
         IEnumerable<CustomerResult> GetAll();
         CustomerResult GetById(long id);

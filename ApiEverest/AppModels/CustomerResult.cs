@@ -4,6 +4,7 @@ namespace AppModels
 {
     public class CustomerResult
     {
+        protected CustomerResult() { }
         public CustomerResult(
         long Id,
         string fullName,
@@ -15,7 +16,7 @@ namespace AppModels
         string postalCode
     )
         {
-            this.Id = Id;
+            Id = Id;
             FullName = fullName;
             Email = email;
             Cellphone = cellphone;
