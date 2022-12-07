@@ -1,6 +1,7 @@
 ﻿using AppModels;
 using DomainModels.Entities;
 using FluentValidation;
+using FluentValidation.Validators;
 using System;
 using System.Linq;
 
@@ -20,11 +21,12 @@ namespace AppServices.Validators
                 .EmailAddress(EmailValidationMode.Net4xRegex)
                 .WithMessage("Invalid Email format");
 
-RuleFor(customer => customer)
-            .Must(customer => customer.EmailConfirmation == customer.Email);
+            RuleFor(customer => customer)
+                .Must(customer => customer.EmailConfirmation == customer.Email);
             
             RuleFor(customer => customer.Cpf)
                 .NotEmpty()
+                .MinimumLength(11)
                 .Must(isValidCpf)
                 .WithMessage("Cpf is invalid");
 

@@ -23,7 +23,7 @@ namespace ApiEverest.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var response = _customerService.GetAll();
+            var response = _customerAppService.GetAll();
            
             return Ok(response);
         }
@@ -33,7 +33,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                var response = _customerService.GetById(id);
+                var response = _customerAppService.GetById(id);
                 return Ok(response);
             }
             catch (ArgumentNullException exception)
@@ -48,8 +48,8 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerService.Create(customerEntity);
-                return Created("Id:", customerEntity.Id);
+                _customerAppService.Create(customerEntity);
+                return Created("Id:", _customerAppService);
             }
             catch (ArgumentException exception)
             {
@@ -63,7 +63,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerService.Update(customerEntity);
+                _customerAppService.Update(customerEntity);
                 return Ok();
             }
             catch (ArgumentNullException exception)
@@ -83,7 +83,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerService.Delete(id);
+                _customerAppService.Delete(id);
                 return NoContent();
             }
             catch (ArgumentNullException exception)

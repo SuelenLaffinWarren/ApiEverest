@@ -1,5 +1,4 @@
-﻿using AppModels;
-using DomainModels.Entities;
+﻿using DomainModels.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

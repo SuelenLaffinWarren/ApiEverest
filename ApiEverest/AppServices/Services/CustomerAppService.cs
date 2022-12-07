@@ -20,8 +20,8 @@ namespace AppServices.Services
 
         public void Create(CustomerCreateDto customerCreateDto)
         {           
-            var customerCreateDto = _mapper.Map<CustomerEntity>(customerCreateDto);
-            _customerService.Create(customerCreateDto );
+            var customerDto = _mapper.Map<CustomerEntity>(customerCreateDto);
+            _customerService.Create(customerDto);
         }
 
         public void Delete(long id)
@@ -43,8 +43,8 @@ namespace AppServices.Services
 
         public void Update(CustomerUpdateDto customerUpdateDto)
         {
-            var customerUpdateDto = _mapper.Map<CustomerEntity>(customerUpdateDto);
-            _customerService.Update(customerUpdateDto);
+            var customerDto = _mapper.Map<CustomerEntity>(customerUpdateDto);
+            _customerService.Update(customerDto);
         }
     }
 }

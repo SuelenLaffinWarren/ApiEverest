@@ -1,10 +1,10 @@
 namespace AppModels
 {
-    public class CustomerResult
+    public class CustomerResultDto
     {
-        protected CustomerResult() { }
+        protected CustomerResultDto() { }
         
-        public CustomerResult(
+        public CustomerResultDto(
         long Id,
         string fullName,
         string email,
@@ -12,8 +12,7 @@ namespace AppModels
         string cellphone,
         string country,
         string city,
-        string postalCode
-    )
+        string postalCode)
         {
             Id = Id;
             FullName = fullName;

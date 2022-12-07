@@ -8,7 +8,7 @@ namespace AppServices.Services
         void Create(CustomerCreateDto customerCreateDto);
         void Update(CustomerUpdateDto customerUpdateDto);
         void Delete(long id);
-        IEnumerable<CustomerResult> GetAll();
-        CustomerResult GetById(long id);
+        IEnumerable<CustomerResultDto> GetAll();
+        CustomerResultDto GetById(long id);
     }
 }
