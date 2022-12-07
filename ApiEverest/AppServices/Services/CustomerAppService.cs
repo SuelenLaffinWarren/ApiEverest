@@ -43,8 +43,8 @@ namespace AppServices.Services
 
         public void Update(CustomerUpdateDto customerUpdateDto)
         {
-            var _customerUpdateDto = _mapper.Map<CustomerEntity>(customerUpdateDto);
-            _customerService.Update(_customerUpdateDto);
+            var customerUpdateDto = _mapper.Map<CustomerEntity>(customerUpdateDto);
+            _customerService.Update(customerUpdateDto);
         }
     }
 }
