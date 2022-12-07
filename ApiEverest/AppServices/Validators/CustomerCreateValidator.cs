@@ -20,6 +20,9 @@ namespace AppServices.Validators
                 .EmailAddress(EmailValidationMode.Net4xRegex)
                 .WithMessage("Invalid Email format");
 
+RuleFor(customer => customer)
+            .Must(customer => customer.EmailConfirmation == customer.Email);
+            
             RuleFor(customer => customer.Cpf)
                 .NotEmpty()
                 .Must(isValidCpf)
