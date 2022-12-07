@@ -17,7 +17,8 @@ namespace AppServices.Validators
             RuleFor(customer => customer.Email)
                 .NotEmpty()
                 .WithMessage("Email is required")
-                .EmailAddress().WithMessage("Invalid Email format");
+                .EmailAddress(EmailValidationMode.Net4xRegex)
+                .WithMessage("Invalid Email format");
 
             RuleFor(customer => customer.Cpf)
                 .NotEmpty()
