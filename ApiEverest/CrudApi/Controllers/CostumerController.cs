@@ -13,10 +13,11 @@ namespace ApiEverest.Controllers
     [ApiController]
     public class CostumerController : ControllerBase
     {
-        private readonly ICustomerAppService _customerService;
-        public CostumerController(ICustomerAppService customerService)
+        private readonly ICustomerAppService _customerAppService;
+        
+        public CostumerController(ICustomerAppService customerAppService)
         {
-            _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
+            _customerAppService = customerAppService ?? throw new ArgumentNullException(nameof(customerAppService));
         }
 
         [HttpGet]
