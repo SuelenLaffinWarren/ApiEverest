@@ -19,11 +19,9 @@ namespace AppServices.Services
         }
 
         public void Create(CustomerCreateDto customerCreateDto)
-        {
-           
-            var _customerCretDto = _mapper.Map<CustomerEntity>(customerCreateDto);
-            _customerService.Create(_customerCretDto);
-
+        {           
+            var customerCreateDto = _mapper.Map<CustomerEntity>(customerCreateDto);
+            _customerService.Create(customerCreateDto );
         }
 
         public void Delete(long id)
