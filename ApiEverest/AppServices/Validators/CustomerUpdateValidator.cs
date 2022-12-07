@@ -29,7 +29,8 @@ namespace AppServices.Validators
             RuleFor(customer => customer.DateOfBirth)
                 .NotEmpty()
                 .WithMessage("date of birth must be informed")
-                .Must(OverAgeCustomer).WithMessage("Customer must be at least 18 years old");
+                .Must(OverAgeCustomer)
+                .WithMessage("Customer must be at least 18 years old");
 
             RuleFor(customer => customer.Country)
                 .NotEmpty()
