@@ -9,6 +9,7 @@ namespace DomainServices.Services
     public class CustomerService : ICustomerService
     {
         private readonly List<CustomerEntity> listCustomers = new();
+        
         public void Create(CustomerEntity customerCreate)
         {
             CustomerDuplicate(customerCreate);
