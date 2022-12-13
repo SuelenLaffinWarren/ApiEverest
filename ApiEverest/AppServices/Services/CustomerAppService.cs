@@ -29,16 +29,16 @@ namespace AppServices.Services
             _customerService.Delete(id);
         }
 
-        public IEnumerable<CustomerResult> GetAll()
+        public IEnumerable<CustomerResultDto> GetAll()
         {
             var getAllCustomers = _customerService.GetAll();
-            return _mapper.Map<IEnumerable<CustomerResult>>(getAllCustomers);
+            return _mapper.Map<IEnumerable<CustomerResultDto>>(getAllCustomers);
         }
 
-        public CustomerResult GetById(long id)
+        public CustomerResultDto GetById(long id)
         {
             var getByIdCustomer = _customerService.GetById(id);
-            return _mapper.Map<CustomerResult>(getByIdCustomer);
+            return _mapper.Map<CustomerResultDto>(getByIdCustomer);
         }
 
         public void Update(CustomerUpdateDto customerUpdateDto)
