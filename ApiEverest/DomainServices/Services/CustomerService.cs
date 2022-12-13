@@ -8,11 +8,13 @@ namespace DomainServices.Services
     public class CustomerService : ICustomerService
     {
         private readonly List<CustomerEntity> listCustomers = new();
-        public void Create(CustomerEntity customerCreate)
+        public long Create(CustomerEntity customerCreate)
         {
             CustomerDuplicate(customerCreate);
             customerCreate.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
             listCustomers.Add(customerCreate);
+            return customerCreate.Id;
+            
         }
         public void Delete(long id)
         {

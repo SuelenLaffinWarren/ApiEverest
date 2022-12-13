@@ -13,9 +13,9 @@ namespace AppServices.Services
             _customerService = customerService ?? throw new System.ArgumentNullException(nameof(customerService));
         }
 
-        public void Create(CustomerEntity customerEntity)
+        public long Create(CustomerEntity customerEntity)
         {
-            _customerService.Create(customerEntity);
+            return _customerService.Create(customerEntity);
         }
 
         public void Delete(long id)
