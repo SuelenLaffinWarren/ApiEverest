@@ -55,4 +55,3 @@ namespace AppModels
         public long Id { get; set; }
     }
 }
-
