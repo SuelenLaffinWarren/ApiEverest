@@ -12,6 +12,5 @@ namespace ApiEverest.Mappers
             CreateMap<CustomerEntity, CustomerCreateDto>();
             CreateMap<CustomerEntity, CustomerUpdateDto>();
         }
-
     }
 }
