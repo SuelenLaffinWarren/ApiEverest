@@ -20,6 +20,7 @@ namespace DomainServices.Services
             var customer = GetById(id);
             listCustomers.Remove(customer);
         }
+        
         public IEnumerable<CustomerEntity> GetAll()
         {
             return listCustomers;
