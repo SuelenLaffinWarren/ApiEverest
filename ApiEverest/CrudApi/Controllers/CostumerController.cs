@@ -14,7 +14,6 @@ namespace ApiEverest.Controllers
 
         public CostumerController(ICustomerAppService customerAppService)
         {
-
             _customerAppService = customerAppService ?? throw new ArgumentNullException(nameof(customerAppService));
         }
 
