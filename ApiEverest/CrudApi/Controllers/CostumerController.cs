@@ -1,7 +1,5 @@
-﻿using AppServices.Services;
-using AutoMapper;
+using AppServices.Services;
 using DomainModels.Entities;
-using DomainServices.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
