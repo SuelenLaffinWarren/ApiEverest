@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddSingleton<ICustomerService, CustomerService>();
         builder.Services.AddTransient<ICustomerAppService, CustomerAppService>();
         builder.Services.AddValidatorsFromAssembly(Assembly.Load(nameof(AppServices)));
-        builder.Services.AddAutoMapper(Assembly.Load(nameof(AppServices)));
+       
      
         var app = builder.Build();
 
