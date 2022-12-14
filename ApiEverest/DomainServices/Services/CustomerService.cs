@@ -50,6 +50,5 @@ namespace DomainServices.Services
             if (listCustomers.Any(customer => customer.Email == model.Email && customer.Id != model.Id))
                 throw new ArgumentException("This email already exists");
         }
-
     }
 }
