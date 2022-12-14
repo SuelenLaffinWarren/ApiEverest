@@ -14,7 +14,6 @@ namespace DomainServices.Services
             customerCreate.Id = listCustomers.LastOrDefault()?.Id + 1 ?? 1;
             listCustomers.Add(customerCreate);
             return customerCreate.Id;
-            
         }
         public void Delete(long id)
         {
