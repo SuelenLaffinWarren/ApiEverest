@@ -38,6 +38,7 @@ namespace AppModels
             Whatsapp = whatsapp;
             Number = number;
         }
+        
         public string FullName { get; set; }
         public string Email { get; set; }
 
