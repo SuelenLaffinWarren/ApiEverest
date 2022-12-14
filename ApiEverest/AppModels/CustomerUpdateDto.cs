@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace AppModels
 {
     public class CustomerUpdateDto

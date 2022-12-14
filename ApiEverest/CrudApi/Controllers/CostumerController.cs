@@ -4,7 +4,7 @@ using DomainModels.Entities;
 using DomainServices.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
+
 
 namespace ApiEverest.Controllers
 {
@@ -12,19 +12,18 @@ namespace ApiEverest.Controllers
     [ApiController]
     public class CostumerController : ControllerBase
     {
-        private readonly ICustomerService _customerService;
-        private readonly IMapper _mapper;
+        private readonly ICustomerAppService _customerAppService;
 
-        public CostumerController(ICustomerService customerService, IMapper mapper)
+        public CostumerController(ICustomerAppService customerAppService)
         {
-            _mapper = mapper;
-            _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
+
+            _customerAppService = customerAppService ?? throw new ArgumentNullException(nameof(customerAppService));
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var response = _customerService.GetAll();
+            var response = _customerAppService.GetAll();
             return Ok(response);
         }
 
@@ -33,7 +32,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                var response = _customerService.GetById(id);
+                var response = _customerAppService.GetById(id);
                 return Ok(response);
             }
             catch (ArgumentNullException exception)
@@ -48,7 +47,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerService.Create(customerEntity);
+                _customerAppService.Create(customerEntity);
                 return Created("Id:", customerEntity.Id);
             }
             catch (ArgumentException exception)
@@ -63,7 +62,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerService.Update(customerEntity);
+                _customerAppService.Update(customerEntity);
                 return Ok();
             }
             catch (ArgumentNullException exception)
@@ -83,7 +82,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerService.Delete(id);
+                _customerAppService.Delete(id);
                 return NoContent();
             }
             catch (ArgumentNullException exception)
