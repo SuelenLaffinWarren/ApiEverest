@@ -44,8 +44,8 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerAppService.Create(customerEntity);
-                return Created("Id:", customerEntity.Id);
+                var customer = _customerAppService.Create(customerEntity);
+                return Created("Id:", customer);
             }
             catch (ArgumentException exception)
             {
