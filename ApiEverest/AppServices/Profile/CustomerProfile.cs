@@ -2,7 +2,6 @@
 using AutoMapper;
 using DomainModels.Entities;
 
-
 namespace ApiEverest.Mappers
 {
     public class CustomerProfile : Profile

@@ -3,7 +3,6 @@ using DomainModels.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-
 namespace ApiEverest.Controllers
 {
     [Route("api/[controller]")]
