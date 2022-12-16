@@ -1,25 +1,25 @@
-﻿using ApiEverest.Entities;
-using CustomerApi.Services;
+using AppServices.Services;
+using DomainModels.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace CustomerApi.Controllers
+namespace ApiEverest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class CostumerController : ControllerBase
     {
-        private readonly ICustomerService _customerService;
+        private readonly ICustomerAppService _customerAppService;
 
-        public CostumerController(ICustomerService customerService)
+        public CostumerController(ICustomerAppService customerAppService)
         {
-            _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
+            _customerAppService = customerAppService ?? throw new ArgumentNullException(nameof(customerAppService));
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var response = _customerService.GetAll();
+            var response = _customerAppService.GetAll();
             return Ok(response);
         }
 
@@ -28,7 +28,7 @@ namespace CustomerApi.Controllers
         {
             try
             {
-                var response = _customerService.GetById(id);
+                var response = _customerAppService.GetById(id);
                 return Ok(response);
             }
             catch (ArgumentNullException exception)
@@ -43,8 +43,8 @@ namespace CustomerApi.Controllers
         {
             try
             {
-                _customerService.Create(customerEntity);
-                return Created("Id:", customerEntity.Id);
+                var customer = _customerAppService.Create(customerEntity);
+                return Created("Id:", customer);
             }
             catch (ArgumentException exception)
             {
@@ -58,7 +58,7 @@ namespace CustomerApi.Controllers
         {
             try
             {
-                _customerService.Update(customerEntity);
+                _customerAppService.Update(customerEntity);
                 return Ok();
             }
             catch (ArgumentNullException exception)
@@ -78,7 +78,7 @@ namespace CustomerApi.Controllers
         {
             try
             {
-                _customerService.Delete(id);
+                _customerAppService.Delete(id);
                 return NoContent();
             }
             catch (ArgumentNullException exception)

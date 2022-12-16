@@ -1,9 +1,9 @@
-﻿using ApiEverest.Entities;
+﻿using DomainModels.Entities;
 using FluentValidation;
 using System;
 using System.Linq;
 
-namespace CustomerApi.Validators
+namespace AppServices.Validators
 {
     public class CustomerRulesValidator : AbstractValidator<CustomerEntity>
     {
@@ -47,7 +47,7 @@ namespace CustomerApi.Validators
                 .NotEmpty()
                 .MinimumLength(8)
                 .MaximumLength(9);
-        } 
+        }
 
         private static bool OverAgeCustomer(DateTime dateOfBirth)
         {
@@ -81,7 +81,7 @@ namespace CustomerApi.Validators
                 rest = 0;
             else
                 rest = 11 - rest;
-                
+
             digit = rest.ToString();
 
             sum = 0;
