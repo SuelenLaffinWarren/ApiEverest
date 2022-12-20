@@ -44,7 +44,8 @@ namespace AppServices.Services
         public void Update(CustomerUpdateDto customerUpdateDto, long id)
         {
             var customerDto = _mapper.Map<CustomerEntity>(customerUpdateDto);
-            return _customerService.Update(customerDto);
+            customerDto.Id= id;
+            _customerService.Update(customerDto, id);
         }
     }
 }

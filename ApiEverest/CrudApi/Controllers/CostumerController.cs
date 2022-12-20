@@ -60,7 +60,7 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                _customerAppService.Update(customerEntity,id);
+                _customerAppService.Update(customerEntity, id);
                  return Ok();
             }
             catch (ArgumentNullException exception)
