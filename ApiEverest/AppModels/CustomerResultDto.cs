@@ -3,7 +3,7 @@ namespace AppModels
     public class CustomerResultDto
     {
         protected CustomerResultDto() { }
-        
+
         public CustomerResultDto(
         long Id,
         string fullName,

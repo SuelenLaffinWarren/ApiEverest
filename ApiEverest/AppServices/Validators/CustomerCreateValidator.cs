@@ -22,7 +22,7 @@ namespace AppServices.Validators
 
             RuleFor(customer => customer)
                 .Must(customer => customer.EmailConfirmation == customer.Email);
-            
+
             RuleFor(customer => customer.Cpf)
                 .NotEmpty()
                 .MinimumLength(11)

@@ -1,11 +1,8 @@
 ﻿using AppModels;
 using AppServices.Services;
-using AutoMapper;
-using DomainModels.Entities;
-using DomainServices.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
+
 
 namespace ApiEverest.Controllers
 {
@@ -14,7 +11,7 @@ namespace ApiEverest.Controllers
     public class CostumerController : ControllerBase
     {
         private readonly ICustomerAppService _customerAppService;
-        
+
         public CostumerController(ICustomerAppService customerAppService)
         {
             _customerAppService = customerAppService ?? throw new ArgumentNullException(nameof(customerAppService));
@@ -24,7 +21,7 @@ namespace ApiEverest.Controllers
         public IActionResult GetAll()
         {
             var response = _customerAppService.GetAll();
-           
+
             return Ok(response);
         }
 
