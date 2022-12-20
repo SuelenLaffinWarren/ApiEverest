@@ -18,10 +18,10 @@ namespace AppServices.Services
             _customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));
         }
 
-        public void Create(CustomerCreateDto customerCreateDto)
+        public long Create(CustomerCreateDto customerCreateDto)
         {           
             var customerDto = _mapper.Map<CustomerEntity>(customerCreateDto);
-            _customerService.Create(customerDto);
+            return  _customerService.Create(customerDto);
         }
 
         public void Delete(long id)

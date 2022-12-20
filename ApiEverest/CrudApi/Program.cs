@@ -9,27 +9,27 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddControllers();
-        builder.Services.AddFluentValidationAutoValidation();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-        builder.Services.AddSingleton<ICustomerService, CustomerService>();
-        builder.Services.AddTransient<ICustomerAppService, CustomerAppService>();
-        builder.Services.AddValidatorsFromAssembly(Assembly.Load(nameof(AppServices)));
-        builder.Services.AddAutoMapper(Assembly.Load(nameof(AppServices)));
-     
-        var app = builder.Build();
+builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<ICustomerService, CustomerService>();
+builder.Services.AddTransient<ICustomerAppService, CustomerAppService>();
+builder.Services.AddValidatorsFromAssembly(Assembly.Load(nameof(AppServices)));
+builder.Services.AddAutoMapper(Assembly.Load(nameof(AppServices)));
 
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+var app = builder.Build();
 
-        app.UseHttpsRedirection();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-        app.UseAuthorization();
+app.UseHttpsRedirection();
 
-        app.MapControllers();
+app.UseAuthorization();
 
-        app.Run();
+app.MapControllers();
+
+app.Run();

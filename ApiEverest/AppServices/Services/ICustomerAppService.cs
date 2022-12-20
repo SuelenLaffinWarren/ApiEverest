@@ -5,7 +5,7 @@ namespace AppServices.Services
 {
     public interface ICustomerAppService
     {
-        void Create(CustomerCreateDto customerCreateDto);
+        long Create(CustomerCreateDto customerCreateDto);
         void Update(CustomerUpdateDto customerUpdateDto);
         void Delete(long id);
         IEnumerable<CustomerResultDto> GetAll();
