@@ -16,6 +16,7 @@ namespace DomainServices.Services
             listCustomers.Add(customerCreate);
             return customerCreate.Id;
         }
+        
         public void Delete(long id)
         {
             var customer = GetById(id);
