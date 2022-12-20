@@ -12,7 +12,8 @@ namespace AppModels
         string cellphone,
         string country,
         string city,
-        string postalCode)
+        string postalCode
+        )
         {
             Id = Id;
             FullName = fullName;
