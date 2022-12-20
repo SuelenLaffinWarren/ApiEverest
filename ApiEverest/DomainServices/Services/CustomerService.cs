@@ -27,6 +27,7 @@ namespace DomainServices.Services
         {
             return listCustomers;
         }
+        
         public CustomerEntity GetById(long id)
         {
             var response = listCustomers.FirstOrDefault(customer => customer.Id == id);
