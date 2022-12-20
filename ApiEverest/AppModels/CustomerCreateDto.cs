@@ -16,7 +16,8 @@ namespace AppModels
           string country,
           string city,
           string postalCode,
-          int number)
+          int number
+        )
         {
             FullName = fullName;
             Email = email;
