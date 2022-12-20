@@ -36,6 +36,7 @@ namespace DomainServices.Services
 
             return response;
         }
+        
         public void Update(CustomerEntity updateCustomer)
         {
             CustomerDuplicate(updateCustomer);
