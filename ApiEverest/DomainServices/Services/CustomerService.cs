@@ -37,9 +37,10 @@ namespace DomainServices.Services
             return response;
         }
         
-        public void Update(CustomerEntity updateCustomer)
+        public void Update(CustomerEntity updateCustomer, long id)
         {
             CustomerDuplicate(updateCustomer);
+            updateCustomer.Id = id;
             var index = listCustomers.FindIndex(customer => customer.Id == updateCustomer.Id);
 
             if (index == -1)

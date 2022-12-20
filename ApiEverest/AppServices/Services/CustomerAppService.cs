@@ -41,10 +41,10 @@ namespace AppServices.Services
             return _mapper.Map<CustomerResultDto>(getByIdCustomer);
         }
 
-        public void Update(CustomerUpdateDto customerUpdateDto)
+        public void Update(CustomerUpdateDto customerUpdateDto, long id)
         {
             var customerDto = _mapper.Map<CustomerEntity>(customerUpdateDto);
-            _customerService.Update(customerDto);
+            return _customerService.Update(customerDto);
         }
     }
 }

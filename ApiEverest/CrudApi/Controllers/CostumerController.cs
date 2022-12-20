@@ -45,8 +45,8 @@ namespace ApiEverest.Controllers
         {
             try
             {
-                var customer = _customerAppService.Create(customerEntity);
-                return Created("Id:", customer);
+                var customerCreate = _customerAppService.Create(customerEntity);
+                return Created("Id:", customerCreate);
             }
             catch (ArgumentException exception)
             {
@@ -56,12 +56,12 @@ namespace ApiEverest.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(CustomerUpdateDto customerEntity)
+        public IActionResult Update(CustomerUpdateDto customerEntity,long id)
         {
             try
             {
-                _customerAppService.Update(customerEntity);
-                return Ok();
+                _customerAppService.Update(customerEntity,id);
+                 return Ok();
             }
             catch (ArgumentNullException exception)
             {
