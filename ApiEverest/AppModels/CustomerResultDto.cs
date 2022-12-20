@@ -15,7 +15,7 @@ namespace AppModels
         string postalCode
         )
         {
-            Id = Id;
+            Id = id;
             FullName = fullName;
             Email = email;
             Cellphone = cellphone;
