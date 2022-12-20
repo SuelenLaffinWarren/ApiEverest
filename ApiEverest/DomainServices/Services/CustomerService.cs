@@ -43,6 +43,7 @@ namespace DomainServices.Services
 
             listCustomers[index] = updateCustomer;
         }
+        
         private void CustomerDuplicate(CustomerEntity model)
         {
             if (listCustomers.Any(customer => customer.Cpf == model.Cpf && customer.Id != model.Id))
