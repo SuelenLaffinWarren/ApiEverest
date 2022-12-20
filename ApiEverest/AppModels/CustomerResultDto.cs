@@ -25,6 +25,7 @@ namespace AppModels
             City = city;
             PostalCode = postalCode;
         }
+        
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Cpf { get; set; }
