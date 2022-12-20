@@ -5,7 +5,7 @@ namespace AppModels
         protected CustomerResultDto() { }
 
         public CustomerResultDto(
-        long Id,
+        long id,
         string fullName,
         string email,
         string cpf,

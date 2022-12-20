@@ -44,6 +44,6 @@ namespace DomainModels.Entities
         public string Country { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
-        public long Id { get; set; }
+        public long Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
