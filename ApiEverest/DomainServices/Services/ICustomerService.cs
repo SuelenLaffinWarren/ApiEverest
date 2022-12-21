@@ -6,7 +6,7 @@ namespace DomainServices.Services
     public interface ICustomerService
     {
         long Create(CustomerEntity model);
-        void Update(CustomerEntity model, long id);
+        void Update(CustomerEntity model);
         void Delete(long id);
         IEnumerable<CustomerEntity> GetAll();
         CustomerEntity GetById(long id);

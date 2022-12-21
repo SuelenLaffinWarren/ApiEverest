@@ -49,4 +49,3 @@ namespace AppModels
         public string PostalCode { get; set; }
     }
 }
-
