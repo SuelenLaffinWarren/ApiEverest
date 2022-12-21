@@ -1,13 +1,15 @@
-﻿using ApiEverest.Entities;
+﻿using AppModels;
+using DomainModels.Entities;
 using FluentValidation;
+using FluentValidation.Validators;
 using System;
 using System.Linq;
 
-namespace CustomerApi.Validators
+namespace AppServices.Validators
 {
-    public class CustomerRulesValidator : AbstractValidator<CustomerEntity>
+    public class CustomerCreateValidator : AbstractValidator<CustomerCreateDto>
     {
-        public CustomerRulesValidator()
+        public CustomerCreateValidator()
         {
             RuleFor(customer => customer.FullName)
                 .NotEmpty()
@@ -15,18 +17,22 @@ namespace CustomerApi.Validators
 
             RuleFor(customer => customer.Email)
                 .NotEmpty()
-                .WithMessage("Email is required")
-                .EmailAddress().WithMessage("Invalid Email format");
+                .EmailAddress(EmailValidationMode.Net4xRegex)
+                .WithMessage("Invalid Email format");
+
+            RuleFor(customer => customer)
+                .Must(customer => customer.EmailConfirmation == customer.Email);
 
             RuleFor(customer => customer.Cpf)
                 .NotEmpty()
+                .MinimumLength(11)
                 .Must(isValidCpf)
                 .WithMessage("Cpf is invalid");
 
             RuleFor(customer => customer.DateOfBirth)
                 .NotEmpty()
-                .WithMessage("date of birth must be informed")
-                .Must(OverAgeCustomer).WithMessage("Customer must be at least 18 years old");
+                .Must(OverAgeCustomer)
+                .WithMessage("Customer must be at least 18 years old");
 
             RuleFor(customer => customer.Country)
                 .NotEmpty()
@@ -47,7 +53,7 @@ namespace CustomerApi.Validators
                 .NotEmpty()
                 .MinimumLength(8)
                 .MaximumLength(9);
-        } 
+        }
 
         private static bool OverAgeCustomer(DateTime dateOfBirth)
         {
@@ -81,7 +87,7 @@ namespace CustomerApi.Validators
                 rest = 0;
             else
                 rest = 11 - rest;
-                
+
             digit = rest.ToString();
 
             sum = 0;

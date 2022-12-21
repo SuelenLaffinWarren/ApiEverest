@@ -1,4 +1,4 @@
-namespace ApiEverest.Entities
+namespace DomainModels.Entities
 {
     public static class StringExtensions
     {
